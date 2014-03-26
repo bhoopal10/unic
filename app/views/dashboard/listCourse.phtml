@@ -1,0 +1,55 @@
+<div class="row-fluid">
+    <div class="col-md-12 col-sm-12">
+        <!--Page Title-->
+        <div class="page-title">
+            <h2><i class="color" style=""></i>Your Courses</h2>
+            <hr />
+        </div>
+        <!-- /Page title -->
+
+    </div>
+</div>
+
+<div class="row-fluid" ng-controller="CourseCtrl" ng-app="unic">
+    <div class="col-md-12 col-sm-12">
+        <table class="table" ng-init="list();">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Price</th>
+                <th>Created On</th>
+                <th>Start On</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="c in courseList track by $id($index)">
+                <td>[[c.name]]</td>
+                <td>[[c.code]]</td>
+                <td>[[c.price]]</td>
+                <td>[[c.createdAt | date]]</td>
+                <td>[[c.startAt]]</td>
+                <td>[[c.active]]</td>
+                <td><a href="#" class="btn btn-blue">Publish</a>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Action<span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Edit</a></li>
+                            <li><a href="<?php echo $this->url->get('dashboard/createCourseDescription/'); ?>[[c.id]]">Add/Edit Description</a></li>
+                            <li><a href="<?php echo $this->url->get('dashboard/manageVideos/');?>[[c.id]]">Manage Videos</a></li>
+
+                        </ul>
+                    </div></td>
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="<?php echo $this->url->get('public/js/admin/app.js');?>"></script>
+<script src="<?php echo $this->url->get('public/js/admin/controller.js');?>"></script>
